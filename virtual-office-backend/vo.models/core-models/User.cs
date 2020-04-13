@@ -20,17 +20,23 @@ namespace vo.models.core_models
         public string Password { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        
+        public bool IsVerified { get; set; }
+        public bool IsActiveUser { get; set; }
+
     }
 
-    public class UserPassord
+    public class UserVerification
     {
-        
+        public int UserVerificationId { get; set; }
+        public int UserId { get; set; }
+        public Guid UserVerificationCode { get; set; }
+        public DateTime GeneratedOn { get; set; }
     }
 
     public static class Role
     {
         public const string Admin = "Admin";
         public const string User = "User";
+        public const string CompanyOwner = "Owner";
     }
 }

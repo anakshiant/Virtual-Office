@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vo.api.DataAccess;
 
 namespace vo.api.Migrations
 {
     [DbContext(typeof(ApiDataContext))]
-    partial class ApiDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200412111026_companyOwner")]
+    partial class companyOwner
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,26 +44,17 @@ namespace vo.api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("AddedOn")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Address")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("EmailId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<bool>("IsVerified")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("Name")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("VerifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("CompanyId");
 
@@ -119,9 +112,6 @@ namespace vo.api.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
@@ -129,7 +119,7 @@ namespace vo.api.Migrations
                     b.HasIndex("EmailId")
                         .IsUnique();
 
-                    b.ToTable("Owners");
+                    b.ToTable("Owner");
                 });
 
             modelBuilder.Entity("vo.models.core_models.Project", b =>
@@ -178,12 +168,6 @@ namespace vo.api.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool>("IsActiveUser")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsVerified")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

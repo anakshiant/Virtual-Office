@@ -10,4 +10,12 @@ namespace vo.api.Utilities
     {
         public string Secret { get; set; }
     }
+
+    public class MailerInfo
+    {
+        public string From { get; set; }
+        public string SmtpUserName { get; set; }
+        public string SmtpPassword { get; set; }
+        public string Host { get; set; }
+    }
 }

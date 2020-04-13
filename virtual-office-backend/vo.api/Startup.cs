@@ -41,6 +41,7 @@ namespace vo.api
 
             var apiSettingsSection = Configuration.GetSection("ApiSettings");
             services.Configure<ApiSettings>(apiSettingsSection);
+            services.Configure<MailerInfo>(Configuration.GetSection("MailerInfo"));
 
             #endregion
 
@@ -70,6 +71,8 @@ namespace vo.api
 
             #region DI
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<IEmailService, EmailService>();
             #endregion
 
             services.AddDbContext<ApiDataContext>(options =>

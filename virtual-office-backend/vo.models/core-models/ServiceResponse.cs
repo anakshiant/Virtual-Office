@@ -6,7 +6,7 @@ namespace vo.models.core_models
 {
     public class ServiceResponse<T> : ServiceResponse
     {
-        T Data { get; set; }
+        public T Data { get; set; }
     }
 
     public class ServiceResponse

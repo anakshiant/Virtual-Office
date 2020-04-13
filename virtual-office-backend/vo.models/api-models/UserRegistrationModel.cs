@@ -19,5 +19,7 @@ namespace vo.models.api_models
         public string Password { get; set; }
         [Required]
         public int BayId { get; set; }
+        [Required]
+        public string Role { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace vo.api.Utilities
         {
             CreateMap<UserRegistrationModel, User>();
             CreateMap<UserUpdateModel, User>();
+            CreateMap<CompanyUpdateModel, Company>();
         }
     }
 }

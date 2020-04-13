@@ -21,6 +21,7 @@ namespace vo.api.DataAccess
         public DbSet<Project> Projects { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Owner> Owners { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,9 +40,10 @@ namespace vo.api.DataAccess
             modelBuilder.Entity<Company>().HasIndex(p => p.Name).IsUnique();
             modelBuilder.Entity<Company>().HasIndex(p => p.EmailId).IsUnique();
             modelBuilder.Entity<Company>().HasIndex(p => p.PhoneNumber).IsUnique();
+            modelBuilder.Entity<Owner>().HasIndex(p => p.EmailId).IsUnique();            
 
             //modelBuilder.Entity<User>().HasOne(p => p.Bay).WithMany(p => p.Users).HasForeignKey(p => p.Bay);
-            modelBuilder.Entity<Company>().HasOne(p => p.Admin);
+            modelBuilder.Entity<Company>().HasMany(p =>p.Admins);
             modelBuilder.Entity<Department>().HasOne(p => p.HeadOfDepartment);
             modelBuilder.Entity<Project>().HasOne(p => p.ProjectLead);
             modelBuilder.Entity<Project>().HasOne(p => p.Manager);
